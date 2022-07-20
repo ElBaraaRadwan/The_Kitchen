@@ -1,0 +1,14 @@
+/node_modules
+ico
+.env
+package-lock.json
+*.png
+*.jpg
+*.jpeg
+*.mp4
+*.mp3
+*.mkv
+*.mpeg
+*.webc
+*.webm 
+*.vscode
