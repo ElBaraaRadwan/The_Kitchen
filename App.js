@@ -1,5 +1,6 @@
 const express = require("express");
 const connectDB = require("./Config/connect");
+const MongoStore = require('connect-mongo');
 require("dotenv").config();
 const app = express();
 
@@ -44,7 +45,7 @@ app.use(
     secret: "keyboard cat",
     resave: false,
     saveUninitialized: false,
-    //store: new MongoStore({ mongooseConnection: mongoose.connection }),
+        store: new MongoStore({ mongooseConnection: mongoose.connection }),
   })
 );
 
@@ -69,6 +70,8 @@ const errorHandler = require("./Middlewares/errorHandler");
 
 app.use(notFound);
 app.use(errorHandler);
+
+app.use()
 
 const port = process.env.PORT || 3000;
 

@@ -3,6 +3,7 @@ const validator = require('validator');
 
 const userSchema = new mongoose.Schema(
   {
+    userID: {type: String},
     username: { type: String, trim: true, unique: true },
     first_name: {
       type: String,
@@ -14,7 +15,7 @@ const userSchema = new mongoose.Schema(
       required: [true, "Last name must be provided"],
       maxlength: [20, "Last name Can't be More than 20 Char"],
     },
-    avatar: [Object],
+    avatar: {type: String},
     password: {
       type: String,
       required: [true, "Password must be provided"],

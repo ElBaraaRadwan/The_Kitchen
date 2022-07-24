@@ -11,12 +11,12 @@ const {
 } = require("../../../utils/Mails");
 
 module.exports = {
-  // --> Get Req For All TIPs
+  // --> Get Req For All TIPs {ADMIN}
   getAllTips: asyncWrapper(async (req, res) => {
     const tips = await TIP.find({}, {}, { sort: { _id: -1 } }).exec();
     res.status(StatusCodes.OK).json({ tips });
   }),
-
+  // --> Get Req For All My TIPs
   getMyTIPs: asyncWrapper(async (req, res) => {
     const { id: userID } = req.params;
   
