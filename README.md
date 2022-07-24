@@ -51,7 +51,7 @@ ___
 | Uploads DESC | Uploads Route |
 | ------ | ------ |
 | Get req for specific TIP Image  | [https://localhost:5000/uploads/TIPs/IMG/...The_IMG_Name][Link18] |
-| Get req for specific TIP Video   | [https://localhost:5000/getTIPs/:id][Link19] |
+| Get req for specific TIP Video   | [https://localhost:5000/uploads/TIPs/Video/...The_Video_Name][Link19] |
 | Get req for specific Recipe Video  | [https://localhost:5000/uploads/Recipes/Video/...The_Video_Name][Link20] |
 | Get req for specific Recipe Image | [https://localhost:5000/uploads/Recipes/IMG/...The_IMG_Name][Link21] |
 
@@ -62,13 +62,29 @@ ___
 
 ## License
 
-MIT
+[MIT](https://choosealicense.com/licenses/mit/)
 
 **Free Software, Hell Yeah!**
 
-   [PlDb]: <https://github.com/joemccann/dillinger/tree/master/plugins/dropbox/README.md>
-   [PlGh]: <https://github.com/joemccann/dillinger/tree/master/plugins/github/README.md>
-   [PlGd]: <https://github.com/joemccann/dillinger/tree/master/plugins/googledrive/README.md>
-   [PlOd]: <https://github.com/joemccann/dillinger/tree/master/plugins/onedrive/README.md>
-   [PlMe]: <https://github.com/joemccann/dillinger/tree/master/plugins/medium/README.md>
-   [PlGa]: <https://github.com/RahulHP/dillinger/blob/master/plugins/googleanalytics/README.md>
+   [Link1]: <https://localhost:5000/getAllTIPs>
+   [Link2]: <https://localhost:5000/getTIPs/:id>
+   [Link3]: <https://localhost:5000/editTIPs/:id>
+   [Link5]: <https://localhost:5000/createTIPs>
+   [Link6]: <https://localhost:5000/getAllRecipe>
+   [Link7]: <https://localhost:5000/getRecipe/:id>
+   [Link8]: <https://localhost:5000/getAllRecipe/myRecipe/:id>
+   [Link9]: <https://localhost:5000/editRecipe/:id>
+   [Link10]: <https://localhost:5000/deleteRecipe/:id>
+   [Link11]: <https://localhost:5000/createRecipe>
+   [Link12]: <https://localhost:5000/auth/facebook>
+   [Link13]: <https://localhost:5000/auth/facebook/callback>
+   [Link14]: <https://localhost:5000/auth/google>
+   [Link15]: <https://localhost:5000/auth/google/callback>
+   [Link16]: <https://localhost:5000/login>
+   [Link17]: <https://localhost:5000/logout>
+   [Link18]: <https://localhost:5000/uploads/TIPs/IMG/...The_IMG_Name>
+   [Link19]: <https://localhost:5000/uploads/TIPs/Video/...The_Video_Name>
+   [Link20]: <https://localhost:5000/uploads/Recipes/Video/...The_Video_Name>
+   [Link21]: <https://localhost:5000/uploads/Recipes/IMG/...The_IMG_Name>
+   [Link22]: <https://localhost:5000/Dashboard/Admin>
+   [Link23]: <https://localhost:5000/Dashboard>
