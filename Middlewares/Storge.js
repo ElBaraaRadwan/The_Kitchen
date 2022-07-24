@@ -1,14 +1,18 @@
 "use strict";
 const multer = require("multer");
 
-// FAQ
+// TIP
 
-const FAQs = multer.diskStorage({
+const TIP = multer.diskStorage({
   destination: (req, file, cb) => {
-    if (file.mimetype === "image/png" || file.mimetype === "image/jpeg") {
-      cb(null, "uploads/FAQs/IMG/");
+    if (
+      file.mimetype === "image/png" ||
+      file.mimetype === "image/gif" ||
+      file.mimetype === "image/jpeg"
+    ) {
+      cb(null, "uploads/TIP/IMG/");
     } else {
-      cb(null, "uploads/FAQs/Video/");
+      cb(null, "uploads/TIP/Video/");
     }
   },
   filename: (req, file, cb) => {
@@ -19,10 +23,11 @@ const FAQs = multer.diskStorage({
   },
 });
 
-const FAQ_filter = (req, file, cb) => {
+const TIP_filter = (req, file, cb) => {
   if (
     file.mimetype === "image/png" ||
     file.mimetype === "image/jpeg" ||
+    file.mimetype === "image/gif" ||
     file.mimetype === "video/mp4" ||
     file.mimetype === "video/mkv" ||
     file.mimetype === "video/mpeg"
@@ -33,19 +38,15 @@ const FAQ_filter = (req, file, cb) => {
   }
 };
 
-const uploadFAQs = multer({
-  storage: FAQs,
-  limits: {
-    fileSize: 50 * 1024 * 1024 * 1024, //50MB max file(s) size
-  },
-  fileFilter: FAQ_filter,
-});
-
 // Recipe
 
 const Recipe = multer.diskStorage({
   destination: (req, file, cb) => {
-    if (file.mimetype === "image/png" || file.mimetype === "image/jpeg") {
+    if (
+      file.mimetype === "image/png" ||
+      file.mimetype === "image/gif" ||
+      file.mimetype === "image/jpeg"
+    ) {
       cb(null, "uploads/Recipe/IMG/");
     } else {
       cb(null, "uploads/Recipe/Video/");
@@ -64,6 +65,7 @@ const Recipefilter = (req, file, cb) => {
   if (
     file.mimetype === "image/png" ||
     file.mimetype === "image/jpeg" ||
+    file.mimetype === "image/gif" ||
     file.mimetype === "video/mp4" ||
     file.mimetype === "video/mkv" ||
     file.mimetype === "video/mpeg"
@@ -74,12 +76,19 @@ const Recipefilter = (req, file, cb) => {
   }
 };
 
-const uploadRecipe = multer({
-  storage: ticket,
-  limits: {
-    fileSize: 5 * 1024 * 1024 * 1024, //5MB max file(s) size
-  },
-  fileFilter: Recipefilter,
-});
-
-module.exports = { uploadRecipe, uploadFAQs };
+module.exports = {
+  uploadRecipe: multer({
+    storage: ticket,
+    limits: {
+      fileSize: 25 * 1024 * 1024 * 1024, //25MB max file(s) size
+    },
+    fileFilter: Recipefilter,
+  }),
+  uploadTIP: multer({
+    storage: TIP,
+    limits: {
+      fileSize: 10 * 1024 * 1024 * 1024, //10MB max file(s) size
+    },
+    fileFilter: TIP_filter,
+  }),
+};
