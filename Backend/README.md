@@ -9,6 +9,7 @@ Install the dependencies and devDependencies and start the server.
 
 ```sh
 cd The_Kitchen
+cd Backend
 npm i
 node app
 ```
