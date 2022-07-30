@@ -15,8 +15,8 @@ router.get(
 );
 
 // @DESC Facebook Auth GET req
-app.get("/auth/facebook", passport.authenticate("facebook", { scope: "email" }));
-app.get(
+router.get("/auth/facebook", passport.authenticate("facebook", { scope: "email" }));
+router.get(
   "/auth/facebook/callback",
   passport.authenticate("facebook", {
     failureRedirect: "/login",

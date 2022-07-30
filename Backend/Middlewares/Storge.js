@@ -76,19 +76,23 @@ const Recipefilter = (req, file, cb) => {
   }
 };
 
+const uploadRecipe = multer({
+  storage: Recipe,
+  limits: {
+    fileSize: 25 * 1024 * 1024 * 1024, //5MB max file(s) size
+  },
+  fileFilter: Recipefilter,
+});
+
+const uploadTIP = multer({
+  storage: TIP,
+  limits: {
+    fileSize: 10 * 1024 * 1024 * 1024, //10MB max file(s) size
+  },
+  fileFilter: TIP_filter,
+});
+
 module.exports = {
-  uploadRecipe: multer({
-    storage: ticket,
-    limits: {
-      fileSize: 25 * 1024 * 1024 * 1024, //25MB max file(s) size
-    },
-    fileFilter: Recipefilter,
-  }),
-  uploadTIP: multer({
-    storage: TIP,
-    limits: {
-      fileSize: 10 * 1024 * 1024 * 1024, //10MB max file(s) size
-    },
-    fileFilter: TIP_filter,
-  }),
+  uploadRecipe,
+  uploadTIP,
 };

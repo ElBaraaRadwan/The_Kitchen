@@ -2,7 +2,7 @@ const User = require("../../Users/Schema/User.Schema");
 const TIP = require("../Schema/Tip.Schema");
 const asyncWrapper = require("../../../middlewares/async");
 const { StatusCodes } = require("http-status-codes");
-const fileSizeFormatter = require("../../../utils/fileSize");
+const fileSizeFormatter = require("../../../Utils/fileSize");
 const {
   sendTipConfirmation,
   sendTipAssgin,

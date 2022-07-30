@@ -1,5 +1,5 @@
-const agent = require("../modules/users/Model/user.model");
-const user = require("../modules/users/Model/user.model");
+// const agent = require("../modules/users/Model/user.model");
+// const user = require("../modules/users/Model/user.model");
 const sendEmail = require("./nodemailer.Config");
 
 const sendResetPassswordEmail = async ({ name, email, token, origin }) => {

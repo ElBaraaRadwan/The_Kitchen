@@ -1,5 +1,4 @@
-const passport = require("passport"),
-  GoogleStrategy = require("passport-google-oauth").OAuth2Strategy,
+const GoogleStrategy = require("passport-google-oauth20").Strategy,
   FacebookStrategy = require("passport-facebook").Strategy,
   User = require("../Schema/User.Schema"),
   generateUsername = require("../../../Utils/nameGenerator"),
@@ -16,7 +15,7 @@ module.exports = {
             process.env.PORT || 3000
           }/auth/google/callback`,
         },
-        asyncWrapper(async (req, accessToken, refreshToken, profile, done) => {
+        async (req, accessToken, refreshToken, profile, done) => {
           const newUser = {
             userID: `GoogleID_${profile.id}`,
             username: profile.username || generateUsername(profile),
@@ -24,16 +23,20 @@ module.exports = {
             last_name: profile.name.familyName,
             avatar: profile.photos[0].value,
           };
-          let user = await User.findOne({ userID: profile.id });
-
-          if (user) {
-            done(null, user);
-          } else {
-            user = await User.create(newUser);
-            done(null, user);
+          
+          try {
+            let user = await User.findOne({ userID: profile.id })
+  
+            if (user) {
+              done(null, user)
+            } else {
+              user = await User.create(newUser)
+              done(null, user)
+            }
+          } catch (err) {
+            console.error(err)
           }
         })
-      )
     );
 
     passport.serializeUser((user, done) => {
@@ -62,9 +65,9 @@ module.exports = {
             "picture.type(large)",
             "email",
           ],
-          enableProof: true
+          enableProof: true,
         },
-        asyncWrapper(async (req, accessToken, refreshToken, profile, done) => {
+        async (req, accessToken, refreshToken, profile, done) => {
           const newUser = {
             userID: `FacebookID_${profile.id}`,
             first_name: profile.name.givenName,
@@ -74,16 +77,19 @@ module.exports = {
             profileImageURL: profile.photos[0].value,
           };
 
-          let user = await User.findOne({ userID: profile.id });
-
-          if (user) {
-            done(null, user);
-          } else {
-            user = await User.create(newUser);
-            done(null, user);
+          try {
+            let user = await User.findOne({ userID: profile.id })
+  
+            if (user) {
+              done(null, user)
+            } else {
+              user = await User.create(newUser)
+              done(null, user)
+            }
+          } catch (err) {
+            console.error(err)
           }
         })
-      )
     );
 
     passport.serializeUser((user, done) => {

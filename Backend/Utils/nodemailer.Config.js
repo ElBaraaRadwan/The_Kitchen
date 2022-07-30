@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const nodemailer = require('nodemailer')
 
-const sendEmail = async ({ to, subject, html }) => {
+module.exports = {sendEmail: async ({ to, subject, html }) => {
   let testAccount = await nodemailer.createTestAccount();
 
   const transporter = nodemailer.createTransport({
@@ -20,6 +20,4 @@ const sendEmail = async ({ to, subject, html }) => {
     subject,
     html,
   });
-};
-
-module.exports = sendEmail;
+}};
